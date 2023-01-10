@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:web_view/screen/HomeScreen.dart';
 
 void main() {
-  runApp(home: Scaffold(body: Text('Hi')));
+  MaterialApp(
+    home: HomeScreen(),
+  );
 }
