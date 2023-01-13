@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -5,12 +7,13 @@ import 'package:random_number/const/color.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
-
   @override
   State<homeScreen> createState() => _homeScreenState();
 }
 
 class _homeScreenState extends State<homeScreen> {
+  List<int> randomNumbers = [123, 456, 789];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,7 @@ class _homeScreenState extends State<homeScreen> {
                 // 나머지 공간을 차지하도록
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [123, 456, 789]
+                  children: randomNumbers
                       .asMap()
                       .entries
                       .map(
@@ -71,7 +74,23 @@ class _homeScreenState extends State<homeScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: RED_COLOR),
-                  onPressed: () {},
+                  onPressed: () {
+                    final rand = Random();
+
+                    final List<int> newNumbers = [];
+
+                    for (int i = 0; i < 3; i++) {
+                      final number = rand.nextInt(1000);
+
+                      newNumbers.add(number);
+                    }
+
+                    print(randomNumbers);
+
+                    setState(() {
+                      randomNumbers = newNumbers;
+                    });
+                  },
                   child: Text('생성하기'),
                 ),
               )
