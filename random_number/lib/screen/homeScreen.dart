@@ -24,80 +24,111 @@ class _homeScreenState extends State<homeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '랜덤 숫자 생성기',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.settings,
-                      color: RED_COLOR,
-                    ),
-                  )
-                ],
-              ),
-              Expanded(
-                // 나머지 공간을 차지하도록
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: randomNumbers
-                      .asMap()
-                      .entries
-                      .map(
-                        (x) => Padding(
-                          padding: EdgeInsets.only(bottom: x.key == 2 ? 0 : 16),
-                          child: Row(
-                            children: x.value
-                                .toString()
-                                .split('')
-                                .map((y) => Image.asset(
-                                      'asset/img/$y.png',
-                                      height: 70,
-                                      width: 50,
-                                    ))
-                                .toList(),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: RED_COLOR),
-                  onPressed: () {
-                    final rand = Random();
-
-                    final List<int> newNumbers = [];
-
-                    for (int i = 0; i < 3; i++) {
-                      final number = rand.nextInt(1000);
-
-                      newNumbers.add(number);
-                    }
-
-                    print(randomNumbers);
-
-                    setState(() {
-                      randomNumbers = newNumbers;
-                    });
-                  },
-                  child: Text('생성하기'),
-                ),
-              )
+              _Header(),
+              _Body(randomNumbers: randomNumbers),
+              _Bottom(onPressed: onPressed),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class _Header extends StatelessWidget {
+  const _Header({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          '랜덤 숫자 생성기',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.settings,
+            color: RED_COLOR,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  final List<int> randomNumbers;
+
+  const _Body({required this.randomNumbers, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      // 나머지 공간을 차지하도록
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: randomNumbers
+            .asMap()
+            .entries
+            .map(
+              (x) => Padding(
+                padding: EdgeInsets.only(bottom: x.key == 2 ? 0 : 16),
+                child: Row(
+                  children: x.value
+                      .toString()
+                      .split('')
+                      .map((y) => Image.asset(
+                            'asset/img/$y.png',
+                            height: 70,
+                            width: 50,
+                          ))
+                      .toList(),
+                ),
+              ),
+            )
+            .toList(),
+      ),
+    );
+  }
+}
+
+class _Bottom extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const _Bottom({required this.onPressed, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: RED_COLOR),
+        onPressed: () {},
+        child: Text('생성하기'),
+      ),
+    );
+  }
+
+  onRandomGenerate() {
+    final rand = Random();
+
+    final List<int> newNumbers = [];
+
+    while (newNumbers.length != 3) {
+      final number = rand.nextInt(1000);
+
+      newNumbers.add(number);
+    }
+
+    setState(() {
+      randomNumbers = newNumbers;
+    });
   }
 }
