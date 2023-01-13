@@ -20,13 +20,14 @@ class _homeScreenState extends State<homeScreen> {
         children: [
           const TestWidget(label: 'test1'),
           const TestWidget(label: 'test2'),
-          ElevatedButton(onPressed: (){
-            setState(() {
-              // setState를 통해 build가 다시 실행됨
-
-            });
-          },
-          child: Text('build!'),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                // setState를 통해 build가 다시 실행됨
+              });
+            },
+            child: Text('build!'),
+          ),
         ],
       ),
     ));
