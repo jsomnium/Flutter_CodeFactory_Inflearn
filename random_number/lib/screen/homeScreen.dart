@@ -110,25 +110,23 @@ class _Bottom extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(primary: RED_COLOR),
-        onPressed: () {},
+        onPressed: () {
+          final rand = Random();
+
+          final List<int> newNumbers = [];
+
+          while (newNumbers.length != 3) {
+            final number = rand.nextInt(1000);
+
+            newNumbers.add(number);
+          }
+
+          setState(() {
+            randomNumbers = newNumbers;
+          });
+        },
         child: Text('생성하기'),
       ),
     );
-  }
-
-  onRandomGenerate() {
-    final rand = Random();
-
-    final List<int> newNumbers = [];
-
-    while (newNumbers.length != 3) {
-      final number = rand.nextInt(1000);
-
-      newNumbers.add(number);
-    }
-
-    setState(() {
-      randomNumbers = newNumbers;
-    });
   }
 }
