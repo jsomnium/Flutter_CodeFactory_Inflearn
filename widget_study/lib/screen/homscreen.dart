@@ -18,6 +18,17 @@ class HomeScreen extends StatelessWidget {
             ElevatedButton(
               // 튀어나온 형태의 버튼
               onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red, // 메인 컬러
+                onPrimary: Colors.black, // 애니메이션 효과의 색상
+                shadowColor: Colors.black, // 그림자
+                elevation: 10.0, // 그림자를 더! Z방향으로 더 튀어나오게.
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                ),
+                padding: EdgeInsets.all(32.0),
+              ),
               child: Text('ElevatedButton'),
             ),
             OutlinedButton(
