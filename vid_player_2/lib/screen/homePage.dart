@@ -1,27 +1,45 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/container.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
-class homeScreen extends StatelessWidget {
+class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
 
   @override
+  State<homeScreen> createState() => _homeScreenState();
+}
+
+class _homeScreenState extends State<homeScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: getBoxDecoration(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            logo(),
-            _AppName(),
-          ],
-        ),
+      body: renderEmpty(),
+    );
+  }
+
+  Widget renderEmpty() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      decoration: getBoxDecoration(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _logo(
+            onTap: onLogoTap,
+          ),
+          _AppName(),
+        ],
       ),
+    );
+  }
+
+  void onLogoTap() async {
+    final video = await ImagePicker().pickVideo(
+      source: ImageSource.gallery,
     );
   }
 
@@ -39,15 +57,15 @@ class homeScreen extends StatelessWidget {
   }
 }
 
-class logo extends StatelessWidget {
-  const logo({super.key});
+class _logo extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _logo({required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Image.asset('asset/image/logo.png'),
-      height: 160,
-    );
+    return GestureDetector(
+        onTap: onTap, child: Image.asset('asset/image/logo.png'));
   }
 }
 
