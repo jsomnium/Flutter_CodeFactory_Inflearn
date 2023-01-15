@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Video Player</string>
+	<string>Vid Player 2</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>video_player</string>
+	<string>vid_player_2</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -47,11 +47,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>앨범 접근 권한을 허용해주세요.<string/>
-	<key>NSCameraUsageDescription </key>
-	<string>카메라 접근 권한을 허용해주세요. <string/>
-	<Key>NSMicrophoneUsageDescription </key>
-	<string>마이크 접근 권한을 허용해주세요. <string>
+	<key>NSPhotoLibraryUsageDescription<key/>
+	<string>앨범 접근 권한 허용 요청<string/>
+	<key>NSCameraUsageDescription<key/>
+	<string>카메라 접근 권한 허용 요청<string/>
+	<key>NSMicrophoneUsageDescription<key/>
+	<string>마이크 접근 권한 허용 요청<string/>
+
 </dict>
 </plist>
