@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:vid_player_2/component/custom_video_player.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -14,10 +15,20 @@ class homeScreen extends StatefulWidget {
 }
 
 class _homeScreenState extends State<homeScreen> {
+  XFile? video;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: renderEmpty(),
+      body: video == null ? renderEmpty() : renderVideo(),
+    );
+  }
+
+  Widget renderVideo() {
+    return Center(
+      child: CustomVideoPlayer(
+        video: video!,
+      ),
     );
   }
 
@@ -41,6 +52,12 @@ class _homeScreenState extends State<homeScreen> {
     final video = await ImagePicker().pickVideo(
       source: ImageSource.gallery,
     );
+
+    if (video != null) {
+      setState(() {
+        this.video = video;
+      });
+    }
   }
 
   BoxDecoration getBoxDecoration() {
