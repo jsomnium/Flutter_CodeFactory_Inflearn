@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/container.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matcher/matcher.dart';
 import 'package:video_player/video_player.dart';
