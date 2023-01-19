@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final TextStyle = TextStyle(fontsize:16.)
     return Scaffold(
       body: FutureBuilder(
         builder: (context, snapshot) {
