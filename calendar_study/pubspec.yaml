@@ -36,8 +36,18 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  table_calendar: ^3.0.9
+  intl: ^0.18.0
+  drift: ^2.4.2
+  sqlite3_flutter_libs: ^0.5.0
+  path_provider: ^2.0.0
+  path: ^1.8.2
+
+
 
 dev_dependencies:
+  drift_dev: ^2.4.1
+  build_runner: ^2.3.3
   flutter_test:
     sdk: flutter
 
@@ -74,12 +84,29 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
+
+  fonts:
+    - family: NotoSans
+      fonts:
+      - asset: asset/font/NotoSansKR-Black.otf
+        weight: 900
+      - asset: asset/font/NotoSansKR-Bold.otf
+        weight: 700
+      - asset: asset/font/NotoSansKR-Light.otf
+        weight: 500
+      - asset: asset/font/NotoSansKR-Medium.otf
+        weight: 400
+      - asset: asset/font/NotoSansKR-Regular.otf
+        weight: 300
+      - asset: asset/font/NotoSansKR-Thin.otf
+        weight: 100
+
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #fonts:
+  #  - family: NotoSans
+  #  fonts:
+  #    - asset: fonts/Schyler-Regular.ttf
+  #    - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
