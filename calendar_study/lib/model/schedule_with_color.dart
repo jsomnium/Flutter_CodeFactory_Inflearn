@@ -1,4 +1,4 @@
-import 'package:calendar_scheduler/database/drift_database.dart';
+import '../database/drift_database.dart';
 
 class ScheduleWithColor {
   final Schedule schedule;
